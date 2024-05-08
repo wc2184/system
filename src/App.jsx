@@ -2,8 +2,8 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import Login from "./firebaseAuth/Login";
-import { useAuth } from "./firebaseAuth/AuthService";
+import Login from "./firebase/Login";
+import { useAuth } from "./firebase/AuthService";
 import {
   Button,
   FormControl,
@@ -12,7 +12,7 @@ import {
   FormLabel,
   Input,
 } from "@chakra-ui/react";
-import { useData } from "./firebaseAuth/data";
+import { useData } from "./firebase/data";
 
 function App() {
   const [count, setCount] = useState(0);

@@ -33,6 +33,8 @@ const createDoc = (collection, document, data) => {
     .catch((error) => {
       console.log("Document creation error: ", error);
     });
+
+  // MAKE IT SO THAT IT AUTOMATICALLY COLLECTION IS USER.UID
 };
 const modifyDoc = (collection, document, data) => {
   updateDoc(doc(db, collection, document), data)

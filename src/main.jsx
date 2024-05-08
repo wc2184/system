@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { DataProvider } from "./firebaseAuth/data.jsx";
+import { DataProvider } from "./firebase/data.jsx";
 // 1. import `ChakraProvider` component
 import { ChakraProvider } from "@chakra-ui/react";
-import { AuthProvider } from "./firebaseAuth/AuthService.jsx";
+import { AuthProvider } from "./firebase/AuthService.jsx";
 import { RouterProvider } from "react-router-dom";
 import { theme } from "./mainCSS.jsx";
 import { router } from "./mainRoutes.jsx";
