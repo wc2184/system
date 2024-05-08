@@ -18,6 +18,8 @@ function SOP() {
   const [hour, setHour] = useState("");
   const [minute, setMinute] = useState("");
   const [duration, setDuration] = useState("");
+  const { user, login, logout } = useAuth();
+  const { userData, createDoc, modifyDoc, fetchDoc } = useData();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -26,6 +28,10 @@ function SOP() {
     alert(
       `Submitted:\nName: ${name}\nHour: ${hour}\nMinute: ${minute}\nDuration: ${duration}`
     );
+    // createDoc("tasks", "dsdfj", {});
+    // modifyDoc("tasks", "dsdfj", { nigd: "ddsf" });
+    // fetchDoc("tasks", "dsdfj", console.log);
+    // issue is the nesting maybe
   };
 
   return (

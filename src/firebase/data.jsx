@@ -2,10 +2,12 @@ import { createContext, useContext, useState, useEffect } from "react";
 import {
   getFirestore,
   doc,
+  collection,
   onSnapshot,
   getDoc,
   setDoc,
   updateDoc,
+  getDocs,
 } from "firebase/firestore";
 import { app } from "./firebase-config.js";
 import { useAuth } from "./AuthService.jsx";
@@ -25,6 +27,25 @@ const fetchDoc = (collection, document, setter) => {
     setter(doc.data());
   });
 };
+
+const fetchDocs = async (col) => {
+  let data = [];
+
+  let getDocHelper = () =>
+    getDocs(collection(db, col)).then((docs) => {
+      // setter(doc.data());
+      // console.log(docs);
+      docs.forEach((doc) => {
+        // console.log(doc.data());
+        data.push(doc.data());
+      });
+      // setter(data);
+    });
+
+  await getDocHelper();
+  console.log(data);
+  return data;
+};
 const createDoc = (collection, document, data) => {
   setDoc(doc(db, collection, document), data)
     .then(() => {
@@ -35,6 +56,7 @@ const createDoc = (collection, document, data) => {
     });
 
   // MAKE IT SO THAT IT AUTOMATICALLY COLLECTION IS USER.UID
+  // NEVERMIND
 };
 const modifyDoc = (collection, document, data) => {
   updateDoc(doc(db, collection, document), data)
@@ -58,5 +80,5 @@ const useDatabase = () => {
     }
   }, [user]);
 
-  return { userData, createDoc, modifyDoc, fetchDoc };
+  return { userData, createDoc, modifyDoc, fetchDoc, fetchDocs };
 };

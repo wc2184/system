@@ -19,17 +19,23 @@ function App() {
   const { user, login, logout } = useAuth();
 
   //
-  const { userData, createDoc, modifyDoc, fetchDoc } = useData();
+  const { userData, createDoc, modifyDoc, fetchDoc, fetchDocs } = useData();
   const [input, setInput] = useState("");
 
   const handleInputChange = (e) => setInput(e.target.value);
 
   const submitStuff = () => {
     console.log("Submitting");
+    console.log(user.uid);
+    // users/user.uid/tasks
     // createDoc("tasks", "dsdfj", {});
 
     // modifyDoc("tasks", "dsdfj", { nigd: "ddsf" });
-    fetchDoc("tasks", "dsdfj", console.log);
+    // fetchDoc("tasks", "dsdfj", console.log);
+    fetchDocs(
+      "users/HnLx4L258Yco1Rp8kDdmbbpqXiw1/qcghgfdcbhcxdfgjcghcgh",
+      console.log
+    );
   };
   //
   // if (user) {
