@@ -7,8 +7,8 @@ import {
 	setDoc,
 	updateDoc,
 } from "firebase/firestore";
-import app from "./firebase.js";
-import { useAuth } from "./auth.js";
+import app from "./firebase-config.js";
+import { useAuth } from "./AuthService.jsx";
 
 const db = getFirestore(app);
 
