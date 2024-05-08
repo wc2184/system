@@ -4,13 +4,37 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import Login from "./firebaseAuth/Login";
 import { useAuth } from "./firebaseAuth/AuthService";
+import {
+  Button,
+  FormControl,
+  FormErrorMessage,
+  FormHelperText,
+  FormLabel,
+  Input,
+} from "@chakra-ui/react";
+import { useData } from "./firebaseAuth/data";
 
 function App() {
   const [count, setCount] = useState(0);
   const { user, login, logout } = useAuth();
-  if (user) {
-    console.log(user.email);
-  }
+
+  //
+  const { userData, createDoc, modifyDoc, fetchDoc } = useData();
+  const [input, setInput] = useState("");
+
+  const handleInputChange = (e) => setInput(e.target.value);
+
+  const submitStuff = () => {
+    console.log("Submitting");
+    // createDoc("tasks", "dsdfj", {});
+
+    // modifyDoc("tasks", "dsdfj", { nigd: "ddsf" });
+    fetchDoc("tasks", "dsdfj", console.log);
+  };
+  //
+  // if (user) {
+  //   console.log(user.email);
+  // }
   return (
     <>
       <div>
@@ -32,6 +56,15 @@ function App() {
       </div>
       <Login />
       {user && user.email}
+      {/*  */}
+      <FormControl onSubmit={submitStuff}>
+        <FormLabel>Stuff</FormLabel>
+        <Input value={input} onChange={handleInputChange} />
+        <Button mt={2} type="submit" onClick={submitStuff}>
+          Submit
+        </Button>
+      </FormControl>
+      {/*  */}
     </>
   );
 }
