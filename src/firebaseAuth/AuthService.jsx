@@ -7,7 +7,7 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import { app } from "./firebase-config";
-
+import { useData } from "./data.jsx";
 const auth = getAuth(app);
 
 const authContext = createContext();
@@ -20,7 +20,6 @@ export const AuthProvider = ({ children }) => {
 
 const useGetAuth = () => {
   const [user, setUser] = useState(null);
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
@@ -30,7 +29,7 @@ const useGetAuth = () => {
 
   const login = async () => {
     const provider = new GoogleAuthProvider();
-    return await signInWithPopup(auth, provider);
+    await signInWithPopup(auth, provider);
   };
   const logout = () => {
     signOut(auth);

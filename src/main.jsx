@@ -1,18 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
 import "./index.css";
 import { DataProvider } from "./firebaseAuth/data.jsx";
 // 1. import `ChakraProvider` component
 import { ChakraProvider } from "@chakra-ui/react";
 import { AuthProvider } from "./firebaseAuth/AuthService.jsx";
+import { RouterProvider } from "react-router-dom";
+import { theme } from "./mainCSS.jsx";
+import { router } from "./mainRoutes.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <AuthProvider>
         <DataProvider>
-          <App />
+          <RouterProvider router={router} />
         </DataProvider>
       </AuthProvider>
     </ChakraProvider>
